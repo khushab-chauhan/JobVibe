@@ -1,0 +1,90 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'dashboard/css/register.css' %}">
+{% endblock %}
+
+{% block title %}
+REGISTER PAGE | JobVibe
+{% endblock %}
+
+{% block style %}
+<style>
+
+
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="login">
+        <div class="login__content">
+            <img class="login__img" src="{% static 'dashboard/images/bg-login.png' %}" alt="Register image" />
+
+            <form class="login__form" method="POST" enctype="multipart/form-data" action="#">
+
+                {% csrf_token %}
+                <!-- Form Content -->
+                <h1 class="login__title"><span>Create</span> Account</h1>
+
+                {% if messages %}
+                <div class="alert-container">
+                    {% for message in messages %}
+                    <div class="alert 
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}alert-dander
+                        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WRANING %}alert-wrannig
+                        {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO &}alert-info
+                        {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS &}alert-success
+                        {% else %}alert-secondary  {% endif %}
+                        
+                        
+                        ">{{message}}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <p class="login__description">Register to get started</p>
+
+                <div class="login__inputs">
+                    <div>
+                        <label for="role" class="login__label">Role</label>
+                        <select id="account_type" name="account_type" class="login__input" required>
+                            <option value="" disabled selected>Select your role</option>
+                            <option value="COMPANY">COMPANY</option>
+                            <option value="CANDIDATE">CANDIDATE</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="EMAIL" class="login__label">Email</label>
+                        <input class="login__input" type="email" id="email" name="email" placeholder="Enter your email"
+                            required />
+                    </div>
+
+                    <div>
+                        <label for="PASSWORD" class="login__label">Password</label>
+                        <input class="login__input" type="password" id="password" name="password"
+                            placeholder="Create password" required />
+                    </div>
+
+                    <div>
+                        <label for="CONFIRM_PASSWORD" class="login__label">Confirm Password</label>
+                        <input class="login__input" type="password" id="confirm_password" name="confirm_password"
+                            placeholder="Confirm password" required />
+                    </div>
+                </div>
+
+                <div class="login__buttons">
+                    <button class="login__button" type="submit">Send OTP</button>
+                </div>
+
+                <p class="login__signup-text">
+                    Already have an account?
+                    <a class="login__signup-link" href="{% url 'login' %}">Log In</a>
+                    <a class="login__signup-link" href="{% url 'otp_register' %}">ootp In</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

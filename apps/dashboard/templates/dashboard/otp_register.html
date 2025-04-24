@@ -1,0 +1,67 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+{% endblock %} 
+
+{% block title %}
+OTP_REGISTER PAGE
+{% endblock %} | JobVibe
+
+{% block style %}
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+    <div class="login">
+        <div class="login__content">
+            <img class="login__img" src="{% static 'dashboard/IMAGES/bg-login.png' %}" alt="OTP Image" />
+
+            <form class="login__form" method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1 class="login__title"><span>Verify</span> OTP</h1>
+                <p class="login__description">Enter the OTP sent to your email</p>
+
+                {% if messages %}
+                    <div class="alear-conatiner">
+                        {% for message in messages %}
+                        <div class="alert
+                        {% if message.level == DEFAULT_MESSAGES_LEVELS_ERROR %}alert-danger
+                        {% elif message.level == DEFAULT_MESSAGES_LEVELS_INFO %}alert-info
+                        {% elif message.level == DEFAULT_MESSAGES_LEVELS_WARNING %}alert-warning
+                        {% elif message.level == DEFAULT_MESSAGES_LEVELS_SUCCESS %}alert-success
+                        {% else %} alert-secondary {% endif %}
+
+
+                        ">{{ message }}
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <input type="hidden" name="email" value="{{ email }}">
+
+                <div class="login__inputs">
+                    <div>
+                        <label for="otp" class="login__label">OTP</label>
+                        <input class="login__input" type="text" id="otp" name="otp" placeholder="Enter OTP" required />
+                    </div>
+
+                </div>
+
+                <div class="login__buttons">
+                    <button class="login__button" type="submit">Submit</button>
+                    
+                </div>
+                <p class="login__signup-text">
+                    i does't get otp?
+                    <a class="login__signup-link" href="{% url 'register' %}">Log OUT</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

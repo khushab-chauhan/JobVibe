@@ -1,0 +1,70 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+{% endblock %} 
+
+
+{% block title %}
+LOGIN PAGE
+{% endblock %} | JobVibe
+
+{% block style %}
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <div class="login">
+        <div class="login__content">
+            <img class="login__img" src="{% static 'dashboard/IMAGES/bg-login.png' %}" alt="Login image" />
+
+            <form class="login__form" method="POST" action="" enctype="multipart/form-data">
+
+                <div>
+
+                    <h1 class="login__title"><span>Welcome</span> Back</h1>
+                    <p class="login__description">Welcome! Please login to continue.</p>
+                </div>
+
+                <div>
+                    <div class="login__inputs">
+                        <div>
+                            <label for="email" class="login__label">Email</label>
+                            <input class="login__input" type="email" id="email" name="email"
+                                placeholder="Enter your email address" required />
+                        </div>
+
+                        <div>
+                            <label for="password" class="login__label">Password</label>
+                            <div class="login__box">
+                                <input class="login__input" type="password" id="password" name="password"
+                                    placeholder="Enter your password" required />
+                                <i class="ri-eye-off-line login__eye" id="input-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <div class="login__buttons">
+                        <button class="login__button" type="submit">Log In</button>
+                    </div>
+
+                    <p class="login__signup-text">
+                        Don't have an account?
+                        <a class="login__signup-link" href="{% url 'register' %}">Sign Up</a>
+                    </p>
+
+                    <a class="login__forgot" href="{% url 'forgot_password'  %}">Forgot Password?</a>
+                    <a class="login__forgot" href="">Forgot Password?</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
