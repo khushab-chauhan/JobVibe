@@ -47,11 +47,12 @@ REGISTER PAGE | JobVibe
 
                 <div class="login__inputs">
                     <div>
+                        <input type="hidden" name="otp" >
                         <label for="role" class="login__label">Role</label>
                         <select id="account_type" name="account_type" class="login__input" required>
                             <option value="" disabled selected>Select your role</option>
-                            <option value="COMPANY">COMPANY</option>
-                            <option value="CANDIDATE">CANDIDATE</option>
+                            <option value="company">COMPANY</option>
+                            <option value="candidate">CANDIDATE</option>
                         </select>
                     </div>
 
@@ -81,7 +82,6 @@ REGISTER PAGE | JobVibe
                 <p class="login__signup-text">
                     Already have an account?
                     <a class="login__signup-link" href="{% url 'login' %}">Log In</a>
-                    <a class="login__signup-link" href="{% url 'otp_register' %}">ootp In</a>
                 </p>
             </form>
         </div>

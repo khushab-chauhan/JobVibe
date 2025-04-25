@@ -1,6 +1,6 @@
 from django.db import models
 from apps.master.models import Baseclass
-from apps.users.contant import ACCOUNT_TYPE_CHIOCE
+from apps.users.constant import ACCOUNT_TYPE_CHIOCE
 # Create your models here.
 
 class User(Baseclass):
@@ -8,6 +8,7 @@ class User(Baseclass):
     email = models.EmailField(max_length=255,unique=True,blank=False,null=False)
     password = models.CharField(max_length=255,blank=False,null=False)
     is_active = models.BooleanField(default=False)
+    otp = models.CharField(max_length=10,default='123456')
 
     def save(self,*args,**kwargs):
         if self.account_type.lower() == 'candidate':
