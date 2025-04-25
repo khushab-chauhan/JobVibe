@@ -1,5 +1,5 @@
 from django.contrib import admin
-from apps.users.models import User
+from apps.users.models import User,User_Personal_Info
 # Register your models here.
 
 class UserAdmin(admin.ModelAdmin):
@@ -24,4 +24,7 @@ class UserAdmin(admin.ModelAdmin):
     admin.site.index_title = "Welcome to the JobVibe Admin Dashboard"
 
 admin.site.register(User,UserAdmin)
+
+
+admin.site.register(User_Personal_Info)
 
